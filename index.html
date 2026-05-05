@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MPG Pricing Calculator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    background: #0a0a0f;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+  .card {
+    background: #13131a;
+    border: 1px solid #2a2a3a;
+    border-radius: 20px;
+    padding: 48px 44px;
+    max-width: 560px;
+    width: 100%;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #a5b4fc;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: #818cf8;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f1f1f8;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .slider-section { margin-bottom: 36px; }
+  .slider-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+  }
+  .slider-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #9ca3af;
+    letter-spacing: 0.02em;
+  }
+  .slider-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f1f1f8;
+  }
+  .slider-value span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #6b7280;
+    margin-left: 4px;
+  }
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #6366f1 20%, #1e1e2e 20%);
+    outline: none;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #6366f1;
+    border: 3px solid #13131a;
+    box-shadow: 0 0 0 2px #6366f1, 0 4px 12px rgba(99,102,241,0.4);
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+  .track-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .track-labels span {
+    font-size: 11px;
+    color: #374151;
+    font-weight: 500;
+  }
+  .divider {
+    height: 1px;
+    background: #1e1e2e;
+    margin: 28px 0;
+  }
+  .breakdown { margin-bottom: 28px; }
+  .breakdown-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4b5563;
+    margin-bottom: 16px;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a26;
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-label {
+    font-size: 13px;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #374151;
+    flex-shrink: 0;
+  }
+  .dot-purple { background: #6366f1; }
+  .breakdown-amount {
+    font-size: 14px;
+    font-weight: 600;
+    color: #d1d5db;
+    font-variant-numeric: tabular-nums;
+  }
+  .total-block {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16162a 100%);
+    border: 1px solid #2d2d4a;
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .total-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 4px;
+  }
+  .total-period { font-size: 11px; color: #374151; }
+  .total-amount {
+    font-size: 38px;
+    font-weight: 800;
+    color: #f1f1f8;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .currency {
+    font-size: 22px;
+    font-weight: 600;
+    color: #6366f1;
+    vertical-align: super;
+    margin-right: 2px;
+  }
+  .per-meeting {
+    font-size: 12px;
+    color: #6b7280;
+    text-align: right;
+    margin-top: 4px;
+  }
+  .tag {
+    display: inline-block;
+    background: rgba(99,102,241,0.15);
+    color: #818cf8;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 8px;
+  }
+  .cta {
+    width: 100%;
+    padding: 15px;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .cta:hover { background: #4f46e5; transform: translateY(-1px); }
+  .cta:active { transform: translateY(0); }
+  .footnote {
+    text-align: center;
+    font-size: 12px;
+    color: #374151;
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge"><div class="badge-dot"></div>Managed Pipeline Generation</div>
+  <h1>MPG Pricing Calculator</h1>
+  <p class="subtitle">Drag the slider to see your monthly investment based on qualified meetings delivered.</p>
+
+  <div class="slider-section">
+    <div class="slider-label-row">
+      <div class="slider-label">Qualified Meetings / Month</div>
+      <div class="slider-value" id="meetingDisplay">5 <span>meetings</span></div>
+    </div>
+    <input type="range" id="meetingSlider" min="1" max="20" value="5" oninput="update()">
+    <div class="track-labels">
+      <span>1</span><span>5</span><span>10</span><span>15</span><span>20</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="breakdown">
+    <div class="breakdown-title">Price Breakdown</div>
+    <div class="breakdown-row">
+      <div class="breakdown-label"><div class="dot"></div>Platform & Infrastructure Fee</div>
+      <div class="breakdown-amount">$15,000</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-label"><div class="dot dot-purple"></div><span id="meetingFeeLabel">5 meetings × $7,000</span></div>
+      <div class="breakdown-amount" id="meetingFeeAmount">$35,000</div>
+    </div>
+  </div>
+
+  <div class="total-block">
+    <div>
+      <div class="total-label">Monthly Investment</div>
+      <div class="total-period">Billed monthly · No hidden fees</div>
+      <div id="discountTag"></div>
+    </div>
+    <div style="text-align:right">
+      <div class="total-amount"><span class="currency">$</span><span id="totalAmount">50,000</span></div>
+      <div class="per-meeting" id="perMeeting">$10,000 per meeting</div>
+    </div>
+  </div>
+
+  <button class="cta">Book a Pipeline Generation Intro →</button>
+  <div class="footnote">No commission fees · 3-month pilot · Opt-out if not satisfied</div>
+</div>
+
+<script>
+function fmt(n) { return n.toLocaleString('en-US'); }
+
+function update() {
+  const n = parseInt(document.getElementById('meetingSlider').value);
+  document.getElementById('meetingDisplay').innerHTML = n + ' <span>meeting' + (n === 1 ? '' : 's') + '</span>';
+
+  const base = 15000;
+  let meetingCost, rateLabel, total;
+
+  if (n <= 10) {
+    meetingCost = n * 7000;
+    rateLabel = n + ' meeting' + (n === 1 ? '' : 's') + ' \u00d7 $7,000';
+    total = base + meetingCost;
+    document.getElementById('discountTag').innerHTML = '';
+  } else {
+    const standardCost = 10 * 7000;
+    const overageMeetings = n - 10;
+    const overageCost = overageMeetings * 700;
+    meetingCost = standardCost + overageCost;
+    rateLabel = '10 \u00d7 $7,000 + ' + overageMeetings + ' \u00d7 $700';
+    total = base + meetingCost;
+    document.getElementById('discountTag').innerHTML = '<span class="tag">Volume rate applied \uD83C\uDF89</span>';
+  }
+
+  const perMeeting = Math.round(total / n);
+  document.getElementById('meetingFeeLabel').textContent = rateLabel;
+  document.getElementById('meetingFeeAmount').textContent = '$' + fmt(meetingCost);
+  document.getElementById('totalAmount').textContent = fmt(total);
+  document.getElementById('perMeeting').textContent = '$' + fmt(perMeeting) + ' per meeting';
+
+  const slider = document.getElementById('meetingSlider');
+  const pct = ((n - 1) / 19) * 100;
+  slider.style.background = 'linear-gradient(to right, #6366f1 ' + pct + '%, #1e1e2e ' + pct + '%)';
+}
+
+update();
+</script>
+</body>
+</html>
