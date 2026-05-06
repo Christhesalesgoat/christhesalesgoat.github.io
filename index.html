@@ -9,72 +9,58 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
     background: #13131a;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 24px 20px;
+    padding: 14px 16px;
   }
-  .card { width: 100%; max-width: 580px; }
   .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(99,102,241,0.12);
-    border: 1px solid rgba(99,102,241,0.3);
-    color: #a5b4fc;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 20px;
-    margin-bottom: 12px;
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3);
+    color: #a5b4fc; font-size: 9px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 20px; margin-bottom: 8px;
   }
   .badge-dot { width: 5px; height: 5px; background: #818cf8; border-radius: 50%; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  h1 { font-size: 22px; font-weight: 700; color: #f1f1f8; margin-bottom: 4px; }
-  .subtitle { color: #6b7280; font-size: 12px; line-height: 1.5; margin-bottom: 20px; }
-  .slider-label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-  .slider-label { font-size: 12px; font-weight: 600; color: #9ca3af; }
-  .slider-value { font-size: 18px; font-weight: 700; color: #f1f1f8; }
-  .slider-value span { font-size: 11px; color: #6b7280; margin-left: 3px; }
-  input[type=range] { -webkit-appearance: none; width: 100%; height: 5px; border-radius: 10px; outline: none; cursor: pointer; }
+  h1 { font-size: 18px; font-weight: 700; color: #f1f1f8; margin-bottom: 2px; }
+  .subtitle { color: #6b7280; font-size: 11px; margin-bottom: 12px; }
+  .slider-label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .slider-label { font-size: 11px; font-weight: 600; color: #9ca3af; }
+  .slider-value { font-size: 16px; font-weight: 700; color: #f1f1f8; }
+  .slider-value span { font-size: 10px; color: #6b7280; margin-left: 2px; }
+  input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; border-radius: 10px; outline: none; cursor: pointer; }
   input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
     background: #6366f1; border: 3px solid #13131a; box-shadow: 0 0 0 2px #6366f1; cursor: pointer;
   }
-  .track-labels { display: flex; justify-content: space-between; margin-top: 6px; margin-bottom: 16px; }
-  .track-labels span { font-size: 10px; color: #374151; }
-  .divider { height: 1px; background: #1e1e2e; margin: 16px 0; }
-  .metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-  .metric { background: #0f0f1a; border: 1px solid #1e1e2e; border-radius: 10px; padding: 14px 16px; }
-  .metric-label { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #4b5563; margin-bottom: 6px; }
-  .metric-value { font-size: 22px; font-weight: 800; color: #f1f1f8; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-  .currency { font-size: 13px; font-weight: 600; color: #6366f1; vertical-align: super; margin-right: 1px; }
-  .metric-sub { font-size: 10px; color: #4b5563; margin-top: 3px; }
+  .track-labels { display: flex; justify-content: space-between; margin-top: 4px; margin-bottom: 10px; }
+  .track-labels span { font-size: 9px; color: #374151; }
+  .divider { height: 1px; background: #1e1e2e; margin: 10px 0; }
+  .metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .metric { background: #0f0f1a; border: 1px solid #1e1e2e; border-radius: 8px; padding: 10px 12px; }
+  .metric-label { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #4b5563; margin-bottom: 4px; }
+  .metric-value { font-size: 19px; font-weight: 800; color: #f1f1f8; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .currency { font-size: 11px; font-weight: 600; color: #6366f1; vertical-align: super; margin-right: 1px; }
+  .metric-sub { font-size: 9px; color: #4b5563; margin-top: 2px; }
   .annual-block {
     background: linear-gradient(135deg, #1a1a2e, #16162a);
-    border: 1px solid #2d2d4a; border-radius: 12px; padding: 16px 20px;
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+    border: 1px solid #2d2d4a; border-radius: 10px; padding: 12px 16px;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
   }
-  .annual-label { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #4b5563; margin-bottom: 3px; }
-  .annual-sub { font-size: 11px; color: #374151; }
-  .annual-amount { font-size: 34px; font-weight: 800; color: #f1f1f8; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-  .tag { display: inline-block; background: rgba(99,102,241,0.15); color: #818cf8; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; margin-top: 6px; }
-  .breakdown-title { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4b5563; margin-bottom: 10px; }
-  .breakdown-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #1a1a26; }
+  .annual-label { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #4b5563; margin-bottom: 2px; }
+  .annual-sub { font-size: 10px; color: #374151; }
+  .annual-amount { font-size: 28px; font-weight: 800; color: #f1f1f8; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .tag { display: inline-block; background: rgba(99,102,241,0.15); color: #818cf8; font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 20px; margin-top: 4px; }
+  .breakdown-title { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4b5563; margin-bottom: 6px; }
+  .breakdown-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #1a1a26; }
   .breakdown-row:last-child { border-bottom: none; }
-  .breakdown-label { font-size: 12px; color: #6b7280; display: flex; align-items: center; gap: 7px; }
+  .breakdown-label { font-size: 11px; color: #6b7280; display: flex; align-items: center; gap: 6px; }
   .dot { width: 5px; height: 5px; border-radius: 50%; background: #374151; flex-shrink: 0; }
   .dot-purple { background: #6366f1; }
-  .breakdown-amount { font-size: 12px; font-weight: 600; color: #d1d5db; }
+  .breakdown-amount { font-size: 11px; font-weight: 600; color: #d1d5db; }
 </style>
 </head>
 <body>
-<div class="card">
   <div class="badge"><div class="badge-dot"></div>Managed Pipeline Generation</div>
   <h1>MPG Pricing Calculator</h1>
-  <p class="subtitle">Drag to see your investment based on qualified meetings delivered per month.</p>
+  <p class="subtitle">Drag to see your investment based on qualified meetings per month.</p>
   <div class="slider-label-row">
     <div class="slider-label">Qualified Meetings / Month</div>
     <div class="slider-value" id="meetingDisplay">5 <span>meetings/mo</span></div>
@@ -96,7 +82,7 @@
     <div class="metric">
       <div class="metric-label">Meetings / Yr</div>
       <div class="metric-value"><span id="annualMeetings">60</span></div>
-      <div class="metric-sub">qualified meetings</div>
+      <div class="metric-sub">qualified / year</div>
     </div>
   </div>
   <div class="annual-block">
@@ -116,7 +102,6 @@
     <div class="breakdown-label"><div class="dot dot-purple"></div><span id="meetingFeeLabel">5 meetings × $7,000</span></div>
     <div class="breakdown-amount" id="meetingFeeAmount">$35,000 / yr</div>
   </div>
-</div>
 <script>
 function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
 function update() {
