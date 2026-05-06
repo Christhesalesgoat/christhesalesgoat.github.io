@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Many Meetings Do You Need? · Revenue Vessel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+  /* ---------- Brand tokens ---------- */
+  :root {
+    --offwhite:  #f0f1f1;  /* primary foundation light */
+    --black:     #13151c;  /* primary foundation dark */
+    --slate:     #546a76;  /* restrained accent */
+    --bluegray:  #889fa7;  /* subtle structure */
+    --lime:      #e6ffa5;  /* single CTA / highlight */
+    --sand:      #dbd2c8;  /* soft callouts */
+    --taupe:     #a99e94;  /* secondary detail */
+    --darkgray:  #414042;  /* secondary text */
+    --divider:   #d0d2d3;  /* dividers */
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Host Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .page { max-width: 1200px; margin: 0 auto; padding: 64px 56px 96px; }
+
+  /* ---------- Header ---------- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; color: var(--black); }
+  .logo svg { width: 28px; height: 28px; display: block; }
+  .logo .wordmark {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--black);
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--darkgray);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero-eyebrow { margin-bottom: 18px; color: var(--slate); }
+
+  h1 {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+    margin: 0 0 20px;
+    color: var(--black);
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+
+  .lede {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--darkgray);
+    max-width: 64ch;
+    margin: 0 0 56px;
+  }
+
+  /* ---------- Layout ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .panel {
+    background: #ffffff;
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+    padding: 36px 36px 32px;
+  }
+
+  .panel-h {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--darkgray);
+    margin: 0 0 28px;
+  }
+
+  /* ---------- Inputs ---------- */
+  .field { margin-bottom: 24px; }
+  .field:last-child { margin-bottom: 0; }
+
+  .field .name {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+
+  .input-wrap {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--divider);
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+  .input-wrap:focus-within {
+    border-color: var(--black);
+    box-shadow: 0 0 0 3px rgba(19, 21, 28, 0.06);
+  }
+  .input-wrap .affix {
+    background: var(--offwhite);
+    color: var(--darkgray);
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    border-right: 1px solid var(--divider);
+  }
+  .input-wrap .affix.right { border-right: none; border-left: 1px solid var(--divider); }
+  .input-wrap input {
+    flex: 1;
+    border: none; outline: none;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--black);
+    background: transparent;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .field .hint {
+    font-size: 13px;
+    color: var(--taupe);
+    margin-top: 8px;
+  }
+
+  /* ---------- Results ---------- */
+  .results {
+    background: var(--black);
+    color: var(--offwhite);
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .results .panel-h { color: var(--bluegray); }
+
+  .headline {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(240, 241, 241, 0.12);
+  }
+  .headline .stat {
+    display: block;
+    font-size: 104px;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    color: var(--lime);
+    font-variant-numeric: tabular-nums;
+  }
+  .headline .stat-unit {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--bluegray);
+    margin-top: 8px;
+  }
+  .headline .stat-label {
+    font-size: 16px;
+    color: var(--offwhite);
+    margin-top: 14px;
+    line-height: 1.5;
+    max-width: 36ch;
+  }
+
+  .breakdown { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .breakdown .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(240, 241, 241, 0.08);
+    font-size: 15px;
+  }
+  .breakdown .row:last-child { border-bottom: none; }
+  .breakdown .row .lbl { color: var(--bluegray); }
+  .breakdown .row .val {
+    color: var(--offwhite);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .breakdown .row.total { padding-top: 16px; }
+  .breakdown .row.total .lbl { color: var(--offwhite); font-weight: 600; }
+  .breakdown .row.total .val { color: var(--offwhite); font-weight: 600; }
+
+  /* ---------- Formula ---------- */
+  .formula {
+    margin-top: 24px;
+    padding: 26px 32px;
+    background: var(--sand);
+    border: none;
+    border-radius: 12px;
+  }
+  .formula .label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--darkgray);
+    margin-bottom: 10px;
+  }
+  .formula code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 15px;
+    color: var(--black);
+    line-height: 1.6;
+    display: block;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1px solid var(--divider);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--darkgray);
+  }
+  footer .tagline {
+    font-weight: 500;
+    color: var(--black);
+  }
+  footer a {
+    color: var(--slate);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  footer a:hover { text-decoration: underline; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: 1fr; gap: 20px; }
+    h1 { font-size: 40px; }
+    .page { padding: 40px 24px 64px; }
+    .headline .stat { font-size: 80px; }
+    .panel { padding: 28px 24px 24px; }
+    footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+  }
+
+  @media (max-width: 520px) {
+    h1 { font-size: 32px; }
+    .lede { font-size: 17px; }
+    .headline .stat { font-size: 64px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 24px; max-width: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="logo" aria-label="Revenue Vessel">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M22 5 L10 16 L22 27" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="wordmark">Revenue Vessel</div>
+    </div>
+    <div class="eyebrow">Managed Pipeline Generation</div>
+  </header>
+
+  <div class="eyebrow hero-eyebrow">The math</div>
+  <h1>How many qualified meetings does your team need each month?</h1>
+  <p class="lede">Plug in your numbers. We'll back out how many sales-ready meetings need to land on your AEs' calendars to hit goal — and how many of those MPG needs to source on top of your organic pipeline.</p>
+
+  <div class="grid">
+    <div class="panel">
+      <h2 class="panel-h">Inputs</h2>
+
+      <div class="field">
+        <label class="name" for="quota">Annual team quota (GP)</label>
+        <div class="input-wrap"><span class="affix">$</span><input type="text" id="quota" inputmode="numeric" value="10,000,000" autocomplete="off"></div>
+        <div class="hint">Gross profit goal for the team this year.</div>
+      </div>
+
+      <div class="field">
+        <label class="name" for="deal">Average deal size (GP per win)</label>
+        <div class="input-wrap"><span class="affix">$</span><input type="text" id="deal" inputmode="numeric" value="50,000" autocomplete="off"></div>
+        <div class="hint">Annual GP per closed customer.</div>
+      </div>
+
+      <div class="field">
+        <label class="name" for="close">Close rate (qualified meeting → customer)</label>
+        <div class="input-wrap"><input type="text" id="close" inputmode="decimal" value="20" autocomplete="off"><span class="affix right">%</span></div>
+        <div class="hint">Of qualified meetings, what % become customers.</div>
+      </div>
+
+      <div class="field">
+        <label class="name" for="organic">Organic meetings per month</label>
+        <div class="input-wrap"><input type="text" id="organic" inputmode="numeric" value="10" autocomplete="off"><span class="affix right">/mo</span></div>
+        <div class="hint">Inbound + referral + AE-sourced today.</div>
+      </div>
+    </div>
+
+    <div class="panel results">
+      <h2 class="panel-h">What MPG needs to deliver</h2>
+
+      <div class="headline">
+        <span class="stat" id="netMeetings">73</span>
+        <div class="stat-unit">net qualified meetings / month</div>
+        <div class="stat-label">Sourced by MPG, on top of your existing organic pipeline.</div>
+      </div>
+
+      <div class="breakdown">
+        <div class="row"><span class="lbl">Customers needed (year)</span><span class="val" id="customers">200</span></div>
+        <div class="row"><span class="lbl">Qualified meetings needed (year)</span><span class="val" id="meetingsYear">1,000</span></div>
+        <div class="row"><span class="lbl">Qualified meetings needed (month)</span><span class="val" id="meetingsMonth">83</span></div>
+        <div class="row"><span class="lbl">Less organic per month</span><span class="val" id="organicSub">−10</span></div>
+        <div class="row total"><span class="lbl">MPG must source per month</span><span class="val" id="mpgPerMonth">73</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="formula">
+    <div class="label">The formula</div>
+    <code>Meetings/mo from MPG = ( Annual quota ÷ ( Avg deal size × Close rate × 12 ) ) − Organic meetings/mo</code>
+  </div>
+
+  <footer>
+    <span class="tagline">Turn Customs Data into Customer Data.</span>
+    <span><a href="https://revenuevessel.com" target="_blank" rel="noopener">revenuevessel.com</a></span>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const parseNum = v => {
+    if (v == null) return 0;
+    const cleaned = String(v).replace(/[^0-9.\-]/g, '');
+    const n = parseFloat(cleaned);
+    return isFinite(n) ? n : 0;
+  };
+  const fmtInt = n => isFinite(n) ? Math.round(n).toLocaleString('en-US') : '0';
+  const fields = {
+    quota:   { el: $('quota'),   format: 'int' },
+    deal:    { el: $('deal'),    format: 'int' },
+    close:   { el: $('close'),   format: 'pct' },
+    organic: { el: $('organic'), format: 'int' }
+  };
+  function reformatField(key) {
+    const f = fields[key];
+    const n = parseNum(f.el.value);
+    if (f.format === 'int') f.el.value = fmtInt(n);
+    else if (f.format === 'pct') f.el.value = n % 1 === 0 ? String(Math.round(n)) : String(n);
+  }
+  function recalc() {
+    const quota = parseNum(fields.quota.el.value);
+    const deal = parseNum(fields.deal.el.value);
+    const closeP = parseNum(fields.close.el.value);
+    const organic = parseNum(fields.organic.el.value);
+    const close = closeP / 100;
+    let customers = 0, meetingsYear = 0, meetingsMonth = 0, net = 0;
+    if (deal > 0) customers = quota / deal;
+    if (close > 0) meetingsYear = customers / close;
+    meetingsMonth = meetingsYear / 12;
+    net = Math.max(0, meetingsMonth - organic);
+    $('customers').textContent = fmtInt(customers);
+    $('meetingsYear').textContent = fmtInt(meetingsYear);
+    $('meetingsMonth').textContent = fmtInt(meetingsMonth);
+    $('organicSub').textContent = '−' + fmtInt(organic);
+    $('mpgPerMonth').textContent = fmtInt(net);
+    $('netMeetings').textContent = fmtInt(net);
+  }
+  Object.keys(fields).forEach(key => {
+    const el = fields[key].el;
+    el.addEventListener('input', recalc);
+    el.addEventListener('blur', () => { reformatField(key); recalc(); });
+    el.addEventListener('focus', () => el.select());
+    el.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+      const dir = e.key === 'ArrowUp' ? 1 : -1;
+      const stepMap = { quota: 500000, deal: 1000, close: 1, organic: 1 };
+      const step = stepMap[key] * (e.shiftKey ? 10 : 1);
+      const cur = parseNum(el.value);
+      const next = Math.max(0, cur + step * dir);
+      el.value = (key === 'close') ? String(next) : fmtInt(next);
+      recalc();
+      e.preventDefault();
+    });
+  });
+  Object.keys(fields).forEach(reformatField);
+  recalc();
+})();
+</script>
+</body>
+</html>
