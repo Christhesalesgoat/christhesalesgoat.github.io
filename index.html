@@ -30,77 +30,56 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .page { max-width: 720px; margin: 0 auto; padding: 56px 32px 80px; }
-
-  /* ---------- Header ---------- */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-  }
-  .logo { display: flex; align-items: center; gap: 10px; color: var(--black); }
-  .logo svg { width: 24px; height: 24px; display: block; }
-  .logo .wordmark {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-  }
-  .eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--darkgray);
-  }
+  .page { max-width: 720px; margin: 0 auto; padding: 24px 32px 48px; }
 
   /* ---------- Hero ---------- */
   h1 {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.05;
     color: var(--black);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .subtitle {
     color: var(--darkgray);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
 
-  /* ---------- Slider card ---------- */
+  /* ---------- Panels ---------- */
   .panel {
     background: #ffffff;
     border: 1px solid var(--divider);
     border-radius: 12px;
-    padding: 28px 28px;
-    margin-bottom: 16px;
+    padding: 22px 24px;
+    margin-bottom: 12px;
   }
 
+  /* ---------- Slider ---------- */
   .slider-label-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   .slider-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--darkgray);
   }
   .slider-value {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     color: var(--black);
     font-variant-numeric: tabular-nums;
     letter-spacing: -0.02em;
   }
   .slider-value .unit {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--taupe);
     margin-left: 6px;
@@ -139,23 +118,65 @@
   .track-labels {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 8px;
   }
   .track-labels span {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--taupe);
     font-variant-numeric: tabular-nums;
   }
 
-  /* ---------- Annual hero (dark + single lime moment) ---------- */
+  /* ---------- Metrics (now above annual) ---------- */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .metric {
+    background: #ffffff;
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--darkgray);
+    margin-bottom: 6px;
+  }
+  .metric-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--black);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .metric-value .currency {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--slate);
+    vertical-align: super;
+    margin-right: 1px;
+  }
+  .metric-sub {
+    font-size: 12px;
+    color: var(--taupe);
+    margin-top: 4px;
+  }
+
+  /* ---------- Annual hero (single lime moment) ---------- */
   .annual-block {
     background: var(--black);
     border-radius: 12px;
-    padding: 28px 32px;
+    padding: 24px 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     gap: 20px;
   }
   .annual-block .label {
@@ -164,14 +185,14 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--bluegray);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .annual-block .sub {
     font-size: 13px;
     color: var(--bluegray);
   }
   .annual-amount {
-    font-size: 48px;
+    font-size: 44px;
     font-weight: 700;
     color: var(--lime);
     font-variant-numeric: tabular-nums;
@@ -179,7 +200,7 @@
     line-height: 1;
   }
   .annual-amount .currency {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     vertical-align: super;
     margin-right: 2px;
@@ -196,63 +217,21 @@
     margin-top: 8px;
   }
 
-  /* ---------- Metrics ---------- */
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .metric {
-    background: #ffffff;
-    border: 1px solid var(--divider);
-    border-radius: 12px;
-    padding: 18px 18px;
-  }
-  .metric-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--darkgray);
-    margin-bottom: 8px;
-  }
-  .metric-value {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--black);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-  }
-  .metric-value .currency {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--slate);
-    vertical-align: super;
-    margin-right: 1px;
-  }
-  .metric-sub {
-    font-size: 12px;
-    color: var(--taupe);
-    margin-top: 4px;
-  }
-
   /* ---------- Breakdown ---------- */
-  .breakdown { padding: 24px 28px; }
+  .breakdown { padding: 20px 24px; }
   .breakdown-title {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--darkgray);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .breakdown-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 12px 0;
+    padding: 10px 0;
     border-bottom: 1px solid var(--divider);
   }
   .breakdown-row:last-child { border-bottom: none; }
@@ -279,8 +258,8 @@
 
   /* ---------- Footer ---------- */
   footer {
-    margin-top: 56px;
-    padding-top: 24px;
+    margin-top: 32px;
+    padding-top: 20px;
     border-top: 1px solid var(--divider);
     display: flex;
     justify-content: space-between;
@@ -294,10 +273,10 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 600px) {
-    .page { padding: 32px 20px 56px; }
-    h1 { font-size: 28px; }
-    .annual-block { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .annual-amount { font-size: 40px; }
+    .page { padding: 20px 18px 40px; }
+    h1 { font-size: 26px; }
+    .annual-block { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .annual-amount { font-size: 36px; }
     .metrics { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 8px; align-items: flex-start; }
   }
@@ -305,16 +284,6 @@
 </head>
 <body>
 <div class="page">
-
-  <header>
-    <div class="logo" aria-label="Revenue Vessel">
-      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M22 5 L10 16 L22 27" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="wordmark">Revenue Vessel</div>
-    </div>
-    <div class="eyebrow">Managed Pipeline Generation</div>
-  </header>
 
   <h1>MPG pricing calculator</h1>
   <p class="subtitle">Drag to see your investment based on qualified meetings per month.</p>
@@ -328,15 +297,6 @@
     <div class="track-labels">
       <span>3</span><span>10</span><span>25</span><span>50</span><span>100</span>
     </div>
-  </div>
-
-  <div class="annual-block">
-    <div>
-      <div class="label">Annual investment</div>
-      <div class="sub">Total yearly commitment</div>
-      <div id="volumeTag"></div>
-    </div>
-    <div class="annual-amount"><span class="currency">$</span><span id="annual">50,000</span></div>
   </div>
 
   <div class="metrics">
@@ -355,6 +315,15 @@
       <div class="metric-value"><span id="annualMeetings">60</span></div>
       <div class="metric-sub">qualified / year</div>
     </div>
+  </div>
+
+  <div class="annual-block">
+    <div>
+      <div class="label">Annual investment</div>
+      <div class="sub">Total yearly commitment</div>
+      <div id="volumeTag"></div>
+    </div>
+    <div class="annual-amount"><span class="currency">$</span><span id="annual">50,000</span></div>
   </div>
 
   <div class="panel breakdown">
@@ -386,8 +355,6 @@ function update() {
   document.getElementById('meetingDisplay').textContent = n;
 
   const base = 15000;
-  // First 10 meetings/mo at $7,000/yr per slot.
-  // Each meeting beyond 10 is $700 per delivered meeting (× 12 months).
   let meetingAnnual;
   if (n <= 10) {
     meetingAnnual = n * 7000;
