@@ -8,17 +8,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;700&display=swap">
 <style>
-  /* ---------- Brand tokens ---------- */
   :root {
-    --offwhite:  #f0f1f1;  /* primary foundation light */
-    --black:     #13151c;  /* primary foundation dark */
-    --slate:     #546a76;  /* restrained accent */
-    --bluegray:  #889fa7;  /* subtle structure */
-    --lime:      #e6ffa5;  /* single CTA / highlight */
-    --sand:      #dbd2c8;  /* soft callouts */
-    --taupe:     #a99e94;  /* secondary detail */
-    --darkgray:  #414042;  /* secondary text */
-    --divider:   #d0d2d3;  /* dividers */
+    --offwhite:  #f0f1f1;
+    --black:     #13151c;
+    --slate:     #546a76;
+    --bluegray:  #889fa7;
+    --lime:      #e6ffa5;
+    --sand:      #dbd2c8;
+    --taupe:     #a99e94;
+    --darkgray:  #414042;
+    --divider:   #d0d2d3;
   }
 
   * { box-sizing: border-box; }
@@ -32,53 +31,35 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .page { max-width: 1200px; margin: 0 auto; padding: 64px 56px 96px; }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 56px 64px; }
 
-  /* ---------- Header ---------- */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 56px;
-  }
-
-  .logo { display: flex; align-items: center; gap: 12px; color: var(--black); }
-  .logo svg { width: 28px; height: 28px; display: block; }
-  .logo .wordmark {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    color: var(--black);
-  }
-
-  .eyebrow {
+  /* ---------- Hero ---------- */
+  .hero-eyebrow {
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--darkgray);
+    color: var(--slate);
+    margin-bottom: 14px;
   }
 
-  /* ---------- Hero ---------- */
-  .hero-eyebrow { margin-bottom: 18px; color: var(--slate); }
-
   h1 {
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 700;
     letter-spacing: -0.025em;
-    line-height: 1.04;
-    margin: 0 0 20px;
+    line-height: 1.05;
+    margin: 0 0 16px;
     color: var(--black);
     max-width: 18ch;
     text-wrap: balance;
   }
 
   .lede {
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.55;
     color: var(--darkgray);
     max-width: 64ch;
-    margin: 0 0 56px;
+    margin: 0 0 36px;
   }
 
   /* ---------- Layout ---------- */
@@ -93,7 +74,7 @@
     background: #ffffff;
     border: 1px solid var(--divider);
     border-radius: 12px;
-    padding: 36px 36px 32px;
+    padding: 32px 32px 28px;
   }
 
   .panel-h {
@@ -102,11 +83,11 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--darkgray);
-    margin: 0 0 28px;
+    margin: 0 0 24px;
   }
 
   /* ---------- Inputs ---------- */
-  .field { margin-bottom: 24px; }
+  .field { margin-bottom: 22px; }
   .field:last-child { margin-bottom: 0; }
 
   .field .name {
@@ -173,13 +154,13 @@
   .results .panel-h { color: var(--bluegray); }
 
   .headline {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-bottom: 26px;
+    padding-bottom: 26px;
     border-bottom: 1px solid rgba(240, 241, 241, 0.12);
   }
   .headline .stat {
     display: block;
-    font-size: 104px;
+    font-size: 96px;
     font-weight: 700;
     letter-spacing: -0.035em;
     line-height: 0.95;
@@ -187,15 +168,15 @@
     font-variant-numeric: tabular-nums;
   }
   .headline .stat-unit {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--bluegray);
     margin-top: 8px;
   }
   .headline .stat-label {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--offwhite);
-    margin-top: 14px;
+    margin-top: 12px;
     line-height: 1.5;
     max-width: 36ch;
   }
@@ -205,9 +186,9 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 12px 0;
+    padding: 11px 0;
     border-bottom: 1px solid rgba(240, 241, 241, 0.08);
-    font-size: 15px;
+    font-size: 14px;
   }
   .breakdown .row:last-child { border-bottom: none; }
   .breakdown .row .lbl { color: var(--bluegray); }
@@ -216,29 +197,29 @@
     font-weight: 500;
     font-variant-numeric: tabular-nums;
   }
-  .breakdown .row.total { padding-top: 16px; }
+  .breakdown .row.total { padding-top: 14px; }
   .breakdown .row.total .lbl { color: var(--offwhite); font-weight: 600; }
   .breakdown .row.total .val { color: var(--offwhite); font-weight: 600; }
 
   /* ---------- Formula ---------- */
   .formula {
-    margin-top: 24px;
-    padding: 26px 32px;
+    margin-top: 20px;
+    padding: 22px 28px;
     background: var(--sand);
     border: none;
     border-radius: 12px;
   }
   .formula .label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--darkgray);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .formula code {
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--black);
     line-height: 1.6;
     display: block;
@@ -246,8 +227,8 @@
 
   /* ---------- Footer ---------- */
   footer {
-    margin-top: 80px;
-    padding-top: 28px;
+    margin-top: 48px;
+    padding-top: 22px;
     border-top: 1px solid var(--divider);
     display: flex;
     justify-content: space-between;
@@ -269,17 +250,17 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 960px) {
     .grid { grid-template-columns: 1fr; gap: 20px; }
-    h1 { font-size: 40px; }
-    .page { padding: 40px 24px 64px; }
-    .headline .stat { font-size: 80px; }
-    .panel { padding: 28px 24px 24px; }
+    h1 { font-size: 36px; }
+    .page { padding: 20px 24px 56px; }
+    .headline .stat { font-size: 72px; }
+    .panel { padding: 26px 22px 22px; }
     footer { flex-direction: column; gap: 8px; align-items: flex-start; }
   }
 
   @media (max-width: 520px) {
-    h1 { font-size: 32px; }
-    .lede { font-size: 17px; }
-    .headline .stat { font-size: 64px; }
+    h1 { font-size: 28px; }
+    .lede { font-size: 16px; }
+    .headline .stat { font-size: 60px; }
   }
 
   @media print {
@@ -291,19 +272,9 @@
 <body>
 <div class="page">
 
-  <header>
-    <div class="logo" aria-label="Revenue Vessel">
-      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M22 5 L10 16 L22 27" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="wordmark">Revenue Vessel</div>
-    </div>
-    <div class="eyebrow">Managed Pipeline Generation</div>
-  </header>
-
-  <div class="eyebrow hero-eyebrow">The math</div>
+  <div class="hero-eyebrow">The math</div>
   <h1>How many qualified meetings does your team need each month?</h1>
-  <p class="lede">Plug in your numbers. We'll back out how many sales-ready meetings need to land on your AEs' calendars to hit goal — and how many of those MPG needs to source on top of your organic pipeline.</p>
+  <p class="lede">Plug in your numbers. We'll back out how many sales-ready meetings need to land on your Rep's calendars to hit the team goal.</p>
 
   <div class="grid">
     <div class="panel">
